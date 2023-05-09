@@ -1,5 +1,10 @@
 # spring-boot-archetype-test-kotlin
 
+## Links
+[Test For Java](https://github.com/KelinTan/spring-boot-archetype-test)
+
+[Test For Kotlin](https://github.com/KelinTan/spring-boot-archetype-test-kotlin)
+
 Spring Boot Archetype Test Kotlin Version
 
 * Flyway manage database version
