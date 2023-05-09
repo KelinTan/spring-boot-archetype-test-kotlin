@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController
 class GreetingControllerV2(
     private val userMapper: UserMapper,
     private val userV2Mapper: UserV2Mapper
-
 ) {
     @GetMapping("/greeting")
     fun greeting(@RequestParam(value = "id") id: Long?): User? {
