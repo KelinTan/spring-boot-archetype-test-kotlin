@@ -15,4 +15,7 @@ Spring Boot Archetype Test Kotlin Version
 
 * DB Test with @MybatisTest and @Sql
 
+* Mock Test with @MockBean and @Mock
+
 * Kotlin style
+
