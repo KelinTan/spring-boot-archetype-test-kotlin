@@ -4,15 +4,16 @@ import com.github.kelin.archetype.controller.GreetingControllerV2
 import com.github.kelin.archetype.entity.User
 import com.github.kelin.archetype.mapper.UserMapper
 import com.github.kelin.archetype.mapper.UserV2Mapper
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
 class GreetingControllerV2MockTest : KtTestUtils {
+    @InjectMocks
     private lateinit var greetingControllerV2: GreetingControllerV2
 
     @Mock
@@ -20,11 +21,6 @@ class GreetingControllerV2MockTest : KtTestUtils {
 
     @Mock
     private lateinit var userMapper: UserMapper
-
-    @BeforeEach
-    fun setup() {
-        greetingControllerV2 = GreetingControllerV2(userMapper, userV2Mapper)
-    }
 
     @Test
     fun testGreeting() {
