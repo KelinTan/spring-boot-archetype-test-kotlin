@@ -1,5 +1,6 @@
-package com.github.kelin.archetype
+package com.github.kelin.archetype.controller
 
+import com.github.kelin.archetype.KtTestUtils
 import com.github.kelin.archetype.TestConstants.USER_DATA
 import com.github.kelin.archetype.TestConstants.USER_V2_DATA
 import org.junit.jupiter.api.Test
@@ -46,6 +47,19 @@ class GreetingControllerV2Test : KtTestUtils {
             .response.contentAsString.json() verify {
             -"id" eq 1
             -"name" eq "test_v2"
+        }
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testGreeting3() {
+        mvc.perform(MockMvcRequestBuilders.get("/v2/greeting3").param("id", "1"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andDo(MockMvcResultHandlers.print())
+            .andReturn()
+            .response.contentAsString.json() verify {
+            -"id" eq 1
+            -"name" eq "test"
         }
     }
 }

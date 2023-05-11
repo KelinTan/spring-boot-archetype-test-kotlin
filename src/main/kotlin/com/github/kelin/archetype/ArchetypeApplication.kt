@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SpringBootArchetypeTestKotlinApplication {
+class ArchetypeApplication {
     fun main(args: Array<String>) {
-        runApplication<SpringBootArchetypeTestKotlinApplication>(*args)
+        runApplication<ArchetypeApplication>(*args)
     }
 }

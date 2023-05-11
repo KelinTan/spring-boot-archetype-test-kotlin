@@ -1,9 +1,10 @@
-package com.github.kelin.archetype
+package com.github.kelin.archetype.controller
 
-import com.github.kelin.archetype.controller.GreetingControllerV2
+import com.github.kelin.archetype.KtTestUtils
 import com.github.kelin.archetype.entity.User
 import com.github.kelin.archetype.mapper.UserMapper
 import com.github.kelin.archetype.mapper.UserV2Mapper
+import com.github.kelin.archetype.repository.UserRepository
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
@@ -21,6 +22,9 @@ class GreetingControllerV2MockTest : KtTestUtils {
 
     @Mock
     private lateinit var userMapper: UserMapper
+
+    @Mock
+    private lateinit var userRepository: UserRepository
 
     @Test
     fun testGreeting() {
