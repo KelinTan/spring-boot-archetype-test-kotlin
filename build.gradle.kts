@@ -17,6 +17,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.0")
     implementation("org.springframework.boot:spring-boot-starter-web")

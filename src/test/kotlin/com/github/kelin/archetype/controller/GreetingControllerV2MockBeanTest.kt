@@ -1,9 +1,10 @@
-package com.github.kelin.archetype
+package com.github.kelin.archetype.controller
 
-import com.github.kelin.archetype.controller.GreetingControllerV2
+import com.github.kelin.archetype.KtTestUtils
 import com.github.kelin.archetype.entity.User
 import com.github.kelin.archetype.mapper.UserMapper
 import com.github.kelin.archetype.mapper.UserV2Mapper
+import com.github.kelin.archetype.repository.UserRepository
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,6 +27,9 @@ class GreetingControllerV2MockBeanTest : KtTestUtils {
 
     @MockBean
     private lateinit var userMapper: UserMapper
+
+    @MockBean
+    private lateinit var userRepository: UserRepository
 
     @Test
     @Throws(Exception::class)

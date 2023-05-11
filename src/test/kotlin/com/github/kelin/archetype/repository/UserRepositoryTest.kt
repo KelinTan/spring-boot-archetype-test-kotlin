@@ -1,40 +1,40 @@
-package com.github.kelin.archetype
+package com.github.kelin.archetype.repository
 
+import com.github.kelin.archetype.KtTestUtils
 import com.github.kelin.archetype.TestConstants.USER_DATA
 import com.github.kelin.archetype.entity.User
-import com.github.kelin.archetype.mapper.UserMapper
 import org.junit.jupiter.api.Test
-import org.mybatis.spring.boot.test.autoconfigure.MybatisTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.test.context.jdbc.Sql
 import org.springframework.transaction.annotation.Transactional
 
-@MybatisTest
+@DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Sql(USER_DATA)
 @Transactional
-class UserMapperTest : KtTestUtils {
+class UserRepositoryTest : KtTestUtils {
     @Autowired
-    lateinit var userMapper: UserMapper
+    private lateinit var userRepository: UserRepository
 
     @Test
-    fun `get user by id`() {
-        val user = userMapper.getUserById(1L)!!
-        user verify {
-            id eq 1
-            name eq "test"
+    fun `find by id`() {
+        userRepository.findById(1L) verify {
+            get() verify {
+                id eq 1
+                name eq "test"
+            }
         }
     }
 
     @Test
-    fun `insert user`() {
+    fun save() {
         val user = User(name = "test2")
-        userMapper.insertUser(user)
+        userRepository.save(user)
 
-        user.id greater 0
-        userMapper.getUserById(user.id) verify {
-            name eq "test2"
+        user verify {
+            id greater 0
         }
     }
 }
