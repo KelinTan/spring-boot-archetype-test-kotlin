@@ -1,8 +1,12 @@
 package com.github.kelin.archetype.mapper
 
-import com.github.kelin.archetype.KtTestUtils
 import com.github.kelin.archetype.TestConstants.USER_DATA
 import com.github.kelin.archetype.entity.User
+import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.longs.shouldBeGreaterThan
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,16 +18,16 @@ import org.springframework.transaction.annotation.Transactional
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Sql(USER_DATA)
 @Transactional
-class UserMapperTest : KtTestUtils {
+class UserMapperTest {
     @Autowired
     lateinit var userMapper: UserMapper
 
     @Test
     fun `get user by id`() {
         val user = userMapper.getUserById(1L)!!
-        user verify {
-            id eq 1
-            name eq "test"
+        user should {
+            it.id shouldBe 1
+            it.name shouldBe "test"
         }
     }
 
@@ -32,9 +36,10 @@ class UserMapperTest : KtTestUtils {
         val user = User(name = "test2")
         userMapper.insertUser(user)
 
-        user.id greater 0
-        userMapper.getUserById(user.id) verify {
-            name eq "test2"
+        user.id shouldBeGreaterThan 0
+        userMapper.getUserById(user.id) should {
+            it.shouldNotBeNull()
+            it.name shouldBeEqual "test2"
         }
     }
 }
