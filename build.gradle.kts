@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "2.7.11"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
-    kotlin("jvm") version "1.6.21"
-    kotlin("plugin.spring") version "1.6.21"
+    kotlin("jvm") version "1.8.0"
+    kotlin("plugin.spring") version "1.8.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
 }
 
@@ -25,6 +25,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:7.10.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.kotest:kotest-assertions-core:5.6.0")
 }
 
 tasks.withType<KotlinCompile> {
